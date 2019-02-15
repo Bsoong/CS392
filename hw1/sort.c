@@ -1,20 +1,20 @@
 #include "sort.h"
-//malloc and realloc for dynamic
+//Compare function used for qsort
 int compare (const void * a, const void * b)
 {
   return (*(int*)a - *(int*)b );
 }
-//Cat function that does the actual printing of the file
+//Main function that error checks/produces the correct output
 void readToBin(FILE *x, FILE *y) {
   char *c = malloc(11);
   if(!c) {
     perror("Malloc Error");
     exit(1);
   }
+  //while loop used to determine the size of the file.
   int lines = 0;
   while(!feof(x)) {
     char a = fgetc(x);
-  //  printf("%c", a);
     if(a == '\n') {
       lines++;
     }
@@ -25,26 +25,19 @@ void readToBin(FILE *x, FILE *y) {
   while(fgets(c, 11, x)) {
     int temp = atoi(c);
     arr[count] = temp;
-    printf("%i", temp);
-  //  fputs(c, y);
     count++;
   }
-  int count1 = 0;
   qsort(arr, lines, sizeof(int), compare);
-  for(int i = 0; i < count; i++) {
-    snprintf(c, sizeof(int), "%d", arr[i]);
-    fputs(c,y);
+  for(int i = 0; i < lines; i++) {
+    fprintf(y, "%d", arr[i]);
     fputs("\n", y);
-    count1++;
   }
-
-
 }
 
 //Main function that does a majority of the error checking/makes the final call to cat
 int main(int argc, char** argv) {
   if(argc != 3) {
-    perror("Error: Need Only two file arguments");
+    perror("Error: Need only two file arguments");
     exit(1);
   }
   FILE *x, *y;

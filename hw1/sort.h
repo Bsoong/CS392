@@ -5,4 +5,6 @@
 
 void readToBin(FILE *x, FILE *y);
 
+int compare(const void * a, const void * b);
+
 #endif
