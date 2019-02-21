@@ -31,5 +31,6 @@ int main(int argc, char** argv) {
   }
   cat(x);
   fclose(x);
+  free(c);
   return 0;
 }
