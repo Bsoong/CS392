@@ -1,2 +1,4 @@
 # CS392
-Stevens Course
+Stevens Course based in C 
+Systems Programming
+
