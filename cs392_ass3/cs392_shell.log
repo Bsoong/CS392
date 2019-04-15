@@ -1,0 +1,25 @@
+pwd
+ls -l -a
+mkdir temp
+ps -h
+man ls
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+exit
